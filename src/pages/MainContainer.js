@@ -6,12 +6,14 @@ import withJwtAxios from "../components/axios/withJwtAxios";
 import {useDispatch, useSelector} from "react-redux";
 import {init} from "../redux/modules/UserDetailModule";
 import axios from "axios";
+import { useCookies } from 'react-cookie';
 
 const MainContainer = () => {
     const userDetail = useSelector(state => state.userDetail);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [token, setToken] = useState('');
+    const [cookies, setCookie] = useCookies(['accessToken']);
 
     useEffect(() => {
         if(token.length === 0) {
@@ -28,7 +30,7 @@ const MainContainer = () => {
     }, [token]);
 
     useEffect(() => {
-        setToken(localStorage.getItem("accessToken"));
+        setToken(cookies.accessToken);
     }, [])
 
     return (

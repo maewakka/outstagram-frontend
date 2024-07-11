@@ -13,6 +13,9 @@ import ProfileContainer from "./pages/profile/ProfileContainer";
 import ProfileEdit from "./pages/profile/modify/ProfileEdit";
 import Edit from "./pages/profile/modify/Edit";
 import Password from "./pages/profile/modify/Password";
+import { useCookies } from 'react-cookie';
+import {useNavigate} from "react-router-dom";
+import React, {useEffect, useState} from 'react';
 
 const App = () => {
   return (

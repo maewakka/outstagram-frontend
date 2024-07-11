@@ -2,9 +2,11 @@ import React, {useEffect, useState} from 'react';
 import style from './Sign.module.css';
 import {useNavigate} from "react-router-dom";
 import authAxios from "../../components/axios/authAxios";
+import { useCookies } from 'react-cookie';
 
 const SignIn = () => {
     const [token, setToken] = useState('');
+    const [cookies, setCookie] = useCookies(['accessToken']);
 
     const signin = [
         {name: 'email', type: 'text', placeholder: '이메일'},
@@ -39,12 +41,18 @@ const SignIn = () => {
     };
 
     useEffect(() => {
-        if(token.length === 0) {
-            return
+        if (cookies.accessToken) {
+            navigate('/outstagram/home');
         }
-        localStorage.setItem('accessToken', token);
-        navigate("/outstagram")
-    }, [token])
+    }, [cookies, navigate]);
+
+    useEffect(() => {
+        if(token.length === 0) {
+            return;
+        }
+        setCookie('accessToken', token, { path: '/', maxAge: 3600 });
+        navigate("/outstagram");
+    }, [token, setCookie, navigate]);
 
     return (
         <>

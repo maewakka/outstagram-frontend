@@ -1,23 +1,37 @@
-import axios from "axios";;
+import axios from "axios";
+import { Cookies } from 'react-cookie';
 
-const headers = {
-    'Content-type': 'multipart/form-data',
-    'Access-Control-Allow-Origin': '*',
-    'Authorization': 'Bearer ' + localStorage.getItem("accessToken")
-}
+// 쿠키에서 accessToken을 가져오는 함수
+const getAccessTokenFromCookies = () => {
+    const cookies = new Cookies();
+    return cookies.get('accessToken');
+};
 
-const multiFileAxios = axios.create({
-    baseURL: '/api/',
-    headers: headers
-});
+const createMultiFileAxios = () => {
+    const accessToken = getAccessTokenFromCookies();
+    
+    const headers = {
+        'Content-type': 'multipart/form-data',
+        'Access-Control-Allow-Origin': '*',
+        'Authorization': accessToken ? `Bearer ${accessToken}` : ''
+    };
 
-multiFileAxios.interceptors.response.use(
-    (response) => {
-        return response;
-    },
-    (error) => {
-        alert(error.response.data);
-        return Promise.reject(error);
-    }
-);
-export default multiFileAxios;
+    const multiFileAxios = axios.create({
+        baseURL: '/api/',
+        headers: headers
+    });
+
+    multiFileAxios.interceptors.response.use(
+        (response) => {
+            return response;
+        },
+        (error) => {
+            alert(error.response.data);
+            return Promise.reject(error);
+        }
+    );
+
+    return multiFileAxios;
+};
+
+export default createMultiFileAxios();
