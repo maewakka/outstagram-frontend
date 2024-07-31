@@ -19,7 +19,7 @@ const SideBar = () => {
     ];
 
     const logout = () => {
-        removeCookie('accessToken'); // accessToken 쿠키 삭제
+        setCookie('accessToken', '', { path: '/'});
         navigate("/users/sign-in");
     };
 
