@@ -60,7 +60,7 @@ const HomeContainer = () => {
     return (
         <div className={style.home_container}>
             <PostRender postList={postList} setPostList={setPostList} postIndex={postIndex} chatIsOpen={chatIsOpen} setChatIsOpen={setChatIsOpen}
-                        onClickLeft={onClickLeft} onClickRight={onClickRight} setLike={setLike} deleteLike={deleteLike}/>
+                         onClickLeft={onClickLeft} onClickRight={onClickRight} setLike={setLike} deleteLike={deleteLike}/>
         </div>
     );
 };

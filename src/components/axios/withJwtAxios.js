@@ -2,11 +2,11 @@ import axios from "axios";
 import getAccessTokenFromCookies from "./getAccessTokenFromCookies"; // 방금 만든 함수
 
 const createWithJwtAxios = () => {
-    const accessToken = getAccessTokenFromCookies();
+    // const accessToken = getAccessTokenFromCookies();
     
     const headers = {
         'Content-Type': 'application/json',
-        'Authorization': accessToken ? `Bearer ${accessToken}` : '',
+        // 'Authorization': accessToken ? `Bearer ${accessToken}` : '',
         'Access-Control-Allow-Origin': '*',
     };
 

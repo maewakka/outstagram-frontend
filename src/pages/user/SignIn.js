@@ -31,28 +31,27 @@ const SignIn = () => {
     const onSubmit = () => {
         authAxios.post("/login", inputs)
             .then((res) => {
-                const accessToken = res.data.accessToken;
-                setToken(accessToken);
                 alert("로그인에 성공하였습니다!");
+                navigate('/outstagram/home')
             })
             .catch((err) => {
                 alert(err.response.data);
             });
     };
 
-    useEffect(() => {
-        if (cookies.accessToken) {
-            navigate('/outstagram/home');
-        }
-    }, [cookies, navigate]);
+    // useEffect(() => {
+    //     if (cookies.accessToken) {
+    //         navigate('/outstagram/home');
+    //     }
+    // }, [cookies, navigate]);
 
-    useEffect(() => {
-        if(token.length === 0) {
-            return;
-        }
-        setCookie('accessToken', token, { path: '/', maxAge: 3600 });
-        navigate("/outstagram");
-    }, [token, setCookie, navigate]);
+    // useEffect(() => {
+    //     if(token.length === 0) {
+    //         return;
+    //     }
+    //     setCookie('accessToken', token, { path: '/', maxAge: 3600 });
+    //     navigate("/outstagram");
+    // }, [token, setCookie, navigate]);
 
     return (
         <>

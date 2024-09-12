@@ -15,23 +15,23 @@ const MainContainer = () => {
     const [token, setToken] = useState('');
     const [cookies, setCookie] = useCookies(['accessToken']);
 
-    useEffect(() => {
-        if(token.length === 0) {
-            return
-        }
+    // useEffect(() => {
+    //     if(token.length === 0) {
+    //         return
+    //     }
 
-        withJwtAxios.get("/profile")
-            .then((res) => {
-                dispatch(init(res.data));
-                navigate("/outstagram/home")
-            }).catch(() => {
-                window.location.reload();
-        })
-    }, [token]);
+    //     withJwtAxios.get("/profile")
+    //         .then((res) => {
+    //             dispatch(init(res.data));
+    //             navigate("/outstagram/home")
+    //         }).catch(() => {
+    //             window.location.reload();
+    //     })
+    // }, [token]);
 
-    useEffect(() => {
-        setToken(cookies.accessToken);
-    }, [])
+    // useEffect(() => {
+    //     setToken(cookies.accessToken);
+    // }, [])
 
     return (
         <div className={style.outstagram_container}>

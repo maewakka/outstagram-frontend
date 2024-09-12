@@ -15,7 +15,7 @@ const logger = createLogger();
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(logger)));
 
 // export const Static_Base_Url = "http://oustagram-backend.outstagram:8080/"
-export const Static_Base_Url = "http://maewakka123.iptime.org:31234/"
+// export const Static_Base_Url = "http://maewakka123.iptime.org:31234/"
 
 root.render(
     <Provider store={store}>
