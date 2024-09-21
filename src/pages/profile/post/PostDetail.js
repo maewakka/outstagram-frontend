@@ -53,7 +53,7 @@ const PostDetail = (props) => {
 
         if(['mp4', 'mov', 'avi', 'wmv', 'MP4', 'MOV', 'AVI', 'WMV'].includes(extension)) {
             return(
-                <video className={style.file} src={url} />
+                <video className={style.file} controls src={url} />
             )
         } else {
             return(
