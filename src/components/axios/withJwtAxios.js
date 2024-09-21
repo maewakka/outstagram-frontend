@@ -20,8 +20,8 @@ const createWithJwtAxios = () => {
             return response;
         },
         (error) => {
-            const code = error.response.status;
-            window.location.href = "/users/sign-in";
+            // const code = error.response.status;
+            // window.location.href = "/users/sign-in";
             return Promise.reject(error);
         }
     );
