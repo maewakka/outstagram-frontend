@@ -15,19 +15,19 @@ const MainContainer = () => {
     const [token, setToken] = useState('');
     const [cookies, setCookie] = useCookies(['accessToken']);
 
-    // useEffect(() => {
+    useEffect(() => {
     //     if(token.length === 0) {
     //         return
     //     }
 
-    //     withJwtAxios.get("/profile")
-    //         .then((res) => {
-    //             dispatch(init(res.data));
-    //             navigate("/outstagram/home")
-    //         }).catch(() => {
-    //             window.location.reload();
-    //     })
-    // }, [token]);
+        withJwtAxios.get("/profile")
+            .then((res) => {
+                dispatch(init(res.data));
+                navigate("/outstagram/home")
+            }).catch(() => {
+                window.location.reload();
+        })
+    }, []);
 
     // useEffect(() => {
     //     setToken(cookies.accessToken);
