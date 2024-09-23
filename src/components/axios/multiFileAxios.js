@@ -26,7 +26,10 @@ const createMultiFileAxios = () => {
             return response;
         },
         (error) => {
-            alert(error.response.data);
+            const code = error.response.status;
+            if(code == 401 || code == 403) {
+                window.location.href = "/users/sign-in";
+            }
             return Promise.reject(error);
         }
     );
